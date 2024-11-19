@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/GDGOC_BookManagement/static/css/main.79d19d76.css",
-    "main.js": "/GDGOC_BookManagement/static/js/main.21fc9e60.js",
+    "main.js": "/GDGOC_BookManagement/static/js/main.a8fb8ff8.js",
     "static/js/453.19618ca1.chunk.js": "/GDGOC_BookManagement/static/js/453.19618ca1.chunk.js",
     "index.html": "/GDGOC_BookManagement/index.html",
     "main.79d19d76.css.map": "/GDGOC_BookManagement/static/css/main.79d19d76.css.map",
-    "main.21fc9e60.js.map": "/GDGOC_BookManagement/static/js/main.21fc9e60.js.map",
+    "main.a8fb8ff8.js.map": "/GDGOC_BookManagement/static/js/main.a8fb8ff8.js.map",
     "453.19618ca1.chunk.js.map": "/GDGOC_BookManagement/static/js/453.19618ca1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.79d19d76.css",
-    "static/js/main.21fc9e60.js"
+    "static/js/main.a8fb8ff8.js"
   ]
 }
