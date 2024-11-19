@@ -2,7 +2,7 @@
   "name": "book-management",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/RizwanHamkaUGM/GDGoC-BookManagement",
+  "homepage": "https://rizwanhamkaugm.github.io/GDGOC_BookManagement/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
