@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const baseURL = "https://script.google.com/macros/s/AKfycbyXnHzYR2Ab6EaQkIqO-DJTgnY2zg3Enx3K31RCHKnn-gAR8edenjgfioUH5XYtoOYL/exec";
+const baseURL = "https://flask-hello-world-gules-gamma-94.vercel.app/api/books";
 
 const BookManagement = () => {
   const [books, setBooks] = useState([]);
@@ -12,6 +12,7 @@ const BookManagement = () => {
   });
   const [editBook, setEditBook] = useState(null);
 
+  // Fetch books
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -19,9 +20,9 @@ const BookManagement = () => {
   const fetchBooks = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${baseURL}?action=get_books`);
+      const response = await fetch(baseURL);
       const data = await response.json();
-      setBooks(data.data || []);
+      setBooks(data.data);
     } catch (error) {
       console.error("Error fetching books:", error);
     } finally {
@@ -29,18 +30,20 @@ const BookManagement = () => {
     }
   };
 
+  // Add book
   const addBook = async (e) => {
     e.preventDefault();
-    const payload = {
-      action: "add",
-      book: newBook,
+    const newBookData = {
+      title: newBook.title.trim(),
+      author: newBook.author.trim(),
+      published_at: newBook.published_at.trim(),
     };
 
     try {
       const response = await fetch(baseURL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(newBookData),
       });
 
       if (response.ok) {
@@ -55,31 +58,28 @@ const BookManagement = () => {
     }
   };
 
+  // Update book
   const updateBook = async (e) => {
     e.preventDefault();
     if (!editBook) return;
 
-    const payload = {
-      action: "update",
-      book_id: editBook.id,
-      updated_book: {
-        title: editBook.title,
-        author: editBook.author,
-        published_at: editBook.published_at,
-      },
+    const updatedBookData = {
+      title: editBook.title.trim(),
+      author: editBook.author.trim(),
+      published_at: editBook.published_at.trim(),
     };
 
     try {
-      const response = await fetch(baseURL, {
-        method: "POST",
+      const response = await fetch(`${baseURL}/${editBook.id}`, {
+        method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(updatedBookData),
       });
 
       if (response.ok) {
         alert("Book updated successfully");
         fetchBooks();
-        setEditBook(null);
+        setEditBook(null); // Clear the form
       } else {
         alert("Failed to update book");
       }
@@ -88,18 +88,12 @@ const BookManagement = () => {
     }
   };
 
+  // Delete book
   const deleteBook = async (id) => {
     if (window.confirm("Are you sure you want to delete this book?")) {
-      const payload = {
-        action: "delete",
-        book_id: id,
-      };
-
       try {
-        const response = await fetch(baseURL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
+        const response = await fetch(`${baseURL}/${id}`, {
+          method: "DELETE",
         });
 
         if (response.ok) {
@@ -114,14 +108,20 @@ const BookManagement = () => {
     }
   };
 
-  const handleInputChange = (e, setState) => {
-    const { name, value } = e.target;
-    setState((prev) => ({ ...prev, [name]: value }));
+  // Handle form changes
+  const handleNewBookChange = (e) => {
+    setNewBook({ ...newBook, [e.target.name]: e.target.value });
+  };
+
+  const handleEditBookChange = (e) => {
+    setEditBook({ ...editBook, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="container mt-5">
       <h1 className="text-center mb-4">Book Management</h1>
+
+      {/* Add Book Form */}
       <div className="card mb-4">
         <div className="card-body">
           <h5>Add New Book</h5>
@@ -134,7 +134,7 @@ const BookManagement = () => {
                   placeholder="Title"
                   name="title"
                   value={newBook.title}
-                  onChange={(e) => handleInputChange(e, setNewBook)}
+                  onChange={handleNewBookChange}
                   required
                 />
               </div>
@@ -145,7 +145,7 @@ const BookManagement = () => {
                   placeholder="Author"
                   name="author"
                   value={newBook.author}
-                  onChange={(e) => handleInputChange(e, setNewBook)}
+                  onChange={handleNewBookChange}
                   required
                 />
               </div>
@@ -155,7 +155,7 @@ const BookManagement = () => {
                   className="form-control"
                   name="published_at"
                   value={newBook.published_at}
-                  onChange={(e) => handleInputChange(e, setNewBook)}
+                  onChange={handleNewBookChange}
                   required
                 />
               </div>
@@ -166,8 +166,10 @@ const BookManagement = () => {
           </form>
         </div>
       </div>
+
+      {/* Book Table */}
       {loading ? (
-        <div className="text-center my-3">
+        <div className="d-flex justify-content-center my-3">
           <div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
@@ -209,6 +211,8 @@ const BookManagement = () => {
           </tbody>
         </table>
       )}
+
+      {/* Edit Book Modal */}
       {editBook && (
         <div className="modal show" style={{ display: "block" }}>
           <div className="modal-dialog">
@@ -233,7 +237,7 @@ const BookManagement = () => {
                       id="edit-title"
                       name="title"
                       value={editBook.title}
-                      onChange={(e) => handleInputChange(e, setEditBook)}
+                      onChange={handleEditBookChange}
                       required
                     />
                   </div>
@@ -247,21 +251,21 @@ const BookManagement = () => {
                       id="edit-author"
                       name="author"
                       value={editBook.author}
-                      onChange={(e) => handleInputChange(e, setEditBook)}
+                      onChange={handleEditBookChange}
                       required
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="edit-published_at" className="form-label">
+                    <label htmlFor="edit-published-at" className="form-label">
                       Published Date
                     </label>
                     <input
                       type="date"
                       className="form-control"
-                      id="edit-published_at"
+                      id="edit-published-at"
                       name="published_at"
                       value={editBook.published_at}
-                      onChange={(e) => handleInputChange(e, setEditBook)}
+                      onChange={handleEditBookChange}
                       required
                     />
                   </div>
