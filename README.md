@@ -1,16 +1,32 @@
-# AHMAD RIZWAN HAMKA
-# 24/539823/SV/24684
+# Manajemen Buku  
 
-LINK REPO : https://github.com/RizwanHamkaUGM/GDGOC_BookManagement
-LINK VERCEL APP (UNTUK TESTING) : flask-hello-world-gules-gamma-94.vercel.app
-LINK APP.PY (API LOCAL) : https://drive.google.com/file/d/1jKf5CnoCF8WrBIM5kuZPSz67Now8vdI0/view?usp=sharing
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue) ![Flask](https://img.shields.io/badge/Flask-2.x-green) ![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-blueviolet)  
 
-# Deskripsi Proyek
-Proyek ini merupakan aplikasi Manajemen Buku yang memungkinkan pengguna untuk:
+**Dibuat oleh:**  
+**Ahmad Rizwan Hamka**  
+**NIM:** 24/539823/SV/24684  
 
-Menambahkan buku baru.
-Mengedit informasi buku.
-Menghapus buku.
-Melihat daftar buku yang tersimpan.
+---
 
-Aplikasi ini dibangun menggunakan Flask sebagai backend, dengan deployment di Vercel.
+## Deskripsi Proyek  
+Proyek **Manajemen Buku** adalah aplikasi berbasis web yang memungkinkan pengguna untuk:  
+- **Menambahkan** buku baru ke dalam daftar.  
+- **Mengedit** informasi buku yang sudah ada.  
+- **Menghapus** buku dari daftar.  
+- **Melihat** daftar buku yang telah tersimpan.  
+
+Proyek ini dibangun menggunakan **Flask** sebagai backend dan telah di-deploy di **Vercel** untuk keperluan testing.  
+
+---
+
+## Demo Aplikasi  
+- **Link Repository GitHub:**  
+  [https://github.com/RizwanHamkaUGM/GDGOC_BookManagement](https://github.com/RizwanHamkaUGM/GDGOC_BookManagement)  
+
+- **Testing Aplikasi di Vercel:**  
+  [flask-hello-world-gules-gamma-94.vercel.app](https://flask-hello-world-gules-gamma-94.vercel.app)  
+
+- **Download API Lokal (app.py):**  
+  [app.py](https://drive.google.com/file/d/1jKf5CnoCF8WrBIM5kuZPSz67Now8vdI0/view?usp=sharing)  
+
+---
