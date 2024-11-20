@@ -5,6 +5,7 @@
 **Dibuat oleh:**  
 **Ahmad Rizwan Hamka**  
 **NIM:** 24/539823/SV/24684  
+**LINK DEPLOYMENT:** [https://rizwanhamkaugm.github.io/GDGOC_BookManagement/](https://rizwanhamkaugm.github.io/GDGOC_BookManagement/)
 
 ---
 
