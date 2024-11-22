@@ -5,6 +5,8 @@
 **Dibuat oleh:**  
 **Ahmad Rizwan Hamka**  
 **NIM:** 24/539823/SV/24684  
+**Testing REST API**  
+  [flask-hello-world-gules-gamma-94.vercel.app](https://flask-hello-world-gules-gamma-94.vercel.app)  
 **LINK DEPLOYMENT:** [https://rizwanhamkaugm.github.io/GDGOC_BookManagement/](https://rizwanhamkaugm.github.io/GDGOC_BookManagement/)
 
 ---
